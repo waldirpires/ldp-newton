@@ -28,17 +28,20 @@ public class Exercicio2MaiorValor {
 
 		// processamento
 		maior = x; // assumindo que X é o maior
+		
 		if (y > maior) {
 			maior = y;
-		} else if (z > maior) {
+		} 
+		
+		if (z > maior) {
 			maior = z;
 		}
 		
 		// tabela
 		// x	y	z	maior
 		// 10	6	4	10
-		// 6	10	4	
-		// 6	8	10
+		// 6	10	4	10
+		// 6	8	10	10
 		
 		
 		// saída
