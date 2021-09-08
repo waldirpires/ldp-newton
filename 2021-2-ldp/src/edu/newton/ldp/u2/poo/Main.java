@@ -26,6 +26,8 @@ public class Main {
 		
 		zerarKm(mercedes);
 		
+		System.gc();
+		
 		System.out.println("done");
 	}
 }
