@@ -46,9 +46,6 @@ public class CaixaDialogoExercicio3 {
 			}
 		}
 
-		// não for positivo
-
-		
 		// processamento
 		String saida = "";
 		for (int i = 0; i <= 100; i = i + n) {
