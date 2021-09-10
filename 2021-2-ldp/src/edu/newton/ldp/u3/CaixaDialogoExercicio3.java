@@ -31,9 +31,18 @@ public class CaixaDialogoExercicio3 {
 			// nao for numero
 			try {
 				n = Integer.parseInt(s);
+				
+				if (n < 0) { // problema
+					throw new RuntimeException("Valor negativo: " + n);
+				}
+				
 				success = true;
 			} catch (NumberFormatException ex) {
+				// valor não é numero
 				JOptionPane.showMessageDialog(null, "Valor inválido: " + s, "ERRO", JOptionPane.ERROR_MESSAGE);
+			} catch (RuntimeException ex) {
+				// valor é negativo
+				JOptionPane.showMessageDialog(null, ex.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 
