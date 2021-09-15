@@ -3,10 +3,16 @@ package edu.newton.ldp.u3;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -52,21 +58,41 @@ public class Exerc2LayoutConversorTemp {
         
         var entrada = new JTextField(5);
         painelNorte.add(entrada);
+        
+//        var comboTipo = new JComboBox<String>();
+//        comboTipo.addItem("Celsius");
+//        comboTipo.addItem("Fahrenheit");
+//        painelNorte.add(comboTipo);
+        
         painel.add(painelNorte, BorderLayout.NORTH);
         
         
-        var painelCentro = new JPanel(new GridLayout(2, 1));
+        var painelCentro = new JPanel(new GridLayout(3, 1));
         var celsius = new JRadioButton("Celsius");
         painelCentro.add(celsius);
         var fahrenheit = new JRadioButton("fahrenheit");
-        painelCentro.add(fahrenheit);
+        
+        // criar um grupo de botoes para fazzer a logica de selecao unica
+        var grupo = new ButtonGroup();
+        grupo.add(celsius);
+        grupo.add(fahrenheit);
+
+        var painelGrupo = new JPanel();
+        painelGrupo.add(celsius);
+        painelGrupo.add(fahrenheit);
+        
+        painelCentro.add(painelGrupo);
+        
+        var botao = new JButton("Ok");
+        
+        painelCentro.add(botao);
+        
         painel.add(painelCentro, BorderLayout.CENTER);
         
         
         // resultado
         var labelResultado = new JLabel("Resultado:");
-        var resposta = new JTextField("70");
-        resposta.setEditable(false);
+        var resposta = new JLabel("100");
 
         var painelSul = new JPanel(new FlowLayout());
         painelSul.add(labelResultado);
@@ -79,6 +105,40 @@ public class Exerc2LayoutConversorTemp {
         frame.pack();
         frame.setVisible(true);
 
+        botao.addActionListener(new ActionListener() {
+        	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+	        	String selected = "";
+				if (celsius.isSelected()) {
+					selected = "Celsius";
+				} else if (fahrenheit.isSelected()) {
+					selected = "Fahrenheit";
+				} else {
+					JOptionPane.showMessageDialog(frame, "Por favor, Selecione um tipo.");
+					return;
+				}
+	        					
+				System.out.println("Temperatura informada: " + entrada.getText() + " " + selected);
+				
+				// F = C * 1.8 + 32
+				float f = Float.parseFloat(entrada.getText()) * 1.8f + 32;
+				
+				// C = (F-32) / 1.8
+				float c = (Float.parseFloat(entrada.getText()) - 32) / 1.8f;
+				
+				if (selected.equals("Celsius")) {
+					resposta.setText(f + " Fahrenheit");
+				} else {
+					resposta.setText(c + " Celsius");
+				}
+				
+				System.out.println(resposta.getText());
+			}
+		});
+        
+        
 	}
 
 }
