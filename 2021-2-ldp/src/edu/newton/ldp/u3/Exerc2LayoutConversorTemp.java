@@ -110,6 +110,14 @@ public class Exerc2LayoutConversorTemp {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				var valor = entrada.getText();
+				
+				if (valor == null || valor.trim().equals("")) {					
+					JOptionPane.showMessageDialog(frame, "Por favor, informe um número.");
+					
+					return;
+				}
+				
 	        	String selected = "";
 				if (celsius.isSelected()) {
 					selected = "Celsius";
@@ -122,11 +130,20 @@ public class Exerc2LayoutConversorTemp {
 	        					
 				System.out.println("Temperatura informada: " + entrada.getText() + " " + selected);
 				
+				float temperatura = 0.0f;
+				try {
+					temperatura = Float.parseFloat(valor);
+				} catch (NumberFormatException ex) {
+					JOptionPane.showMessageDialog(frame, "Número inválido: " + valor, "ERRO", JOptionPane.ERROR_MESSAGE);
+					
+					return;
+				}
+				
 				// F = C * 1.8 + 32
-				float f = Float.parseFloat(entrada.getText()) * 1.8f + 32;
+				float f = temperatura * 1.8f + 32;
 				
 				// C = (F-32) / 1.8
-				float c = (Float.parseFloat(entrada.getText()) - 32) / 1.8f;
+				float c = (temperatura - 32) / 1.8f;
 				
 				if (selected.equals("Celsius")) {
 					resposta.setText(f + " Fahrenheit");
@@ -137,7 +154,6 @@ public class Exerc2LayoutConversorTemp {
 				System.out.println(resposta.getText());
 			}
 		});
-        
         
 	}
 
