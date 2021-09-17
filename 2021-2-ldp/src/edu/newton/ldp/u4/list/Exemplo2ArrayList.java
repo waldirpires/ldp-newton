@@ -4,6 +4,22 @@ import java.util.ArrayList;
 
 public class Exemplo2ArrayList {
 	
+	/**
+	 * Problema:
+	 * implementar um método que permite buscar por um determinado
+	 * estado dentro da lista de estados.
+	 * Se o estado for encontrado, retornar o índice onde ele foi
+	 * encontrado no vetor
+	 * Caso contrário, retornar -1 (não encontrado)
+	 * 
+	 * @param args
+	 */
+	
+	private static int buscaSequencial(ArrayList<String> estados, String estado) {
+		return -1;
+	}
+	
+	
 	public static void main(String[] args) {
 		
 		var estados = new ArrayList<String>();
