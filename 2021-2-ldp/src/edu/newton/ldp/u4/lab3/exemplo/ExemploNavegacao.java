@@ -64,7 +64,7 @@ public class ExemploNavegacao {
 					return;
 				}
 				
-				nomes.add(nome);
+				nomes.add(nome); // salvar na lista
 				
 				System.out.println(nomes);
 				
@@ -84,7 +84,7 @@ public class ExemploNavegacao {
 				index++;
 				System.out.println("Indice: "+ index);
 				if (index < nomes.size()) {
-					texto.setText(nomes.get(index));					
+					texto.setText(nomes.get(index)); // avança na lista					
 				} else {
 					index = nomes.size();
 					texto.setText("");
@@ -99,7 +99,7 @@ public class ExemploNavegacao {
 			public void actionPerformed(ActionEvent e) {
 				index--;
 				if (index >= 0) {
-					texto.setText(nomes.get(index));										
+					texto.setText(nomes.get(index)); // volta na lista										
 				} else {
 					index = 0;
 				}
@@ -119,7 +119,7 @@ public class ExemploNavegacao {
 				}
 				
 				if (index < nomes.size()) {
-					nomes.remove(nome);
+					nomes.remove(nome); // remove da lista
 					index--;
 				}
 				

@@ -37,10 +37,10 @@ public class CaixaDialogoExercicio3 {
 				}
 				
 				success = true;
-			} catch (NumberFormatException ex) {
+			} catch (NumberFormatException ex) { // específica
 				// valor não é numero
 				JOptionPane.showMessageDialog(null, "Valor inválido: " + s, "ERRO", JOptionPane.ERROR_MESSAGE);
-			} catch (RuntimeException ex) {
+			} catch (RuntimeException ex) { // genérica
 				// valor é negativo
 				JOptionPane.showMessageDialog(null, ex.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
 			}
