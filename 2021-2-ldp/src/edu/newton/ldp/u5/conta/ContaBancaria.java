@@ -11,9 +11,7 @@ public class ContaBancaria {
 			ContaBloqueadaParaOperacoesException{
 
 		// valor invalido (menor que zero)
-		if (valor <= 0) {
-			throw new ValorInvalidoException(valor);
-		}
+		validarValorParaOperacao(valor, "saque");
 		
 		// saldo insuficiente
 		if (saldo < valor) {
@@ -21,17 +19,36 @@ public class ContaBancaria {
 		}
 		
 		// estado inválido (inativa, bloqueada)
-		if (estado != 2) {
-			throw new ContaBloqueadaParaOperacoesException(estado);
-		}		
+		validarEstadoConta();		
 		
 		// caso de sucesso
 		saldo = saldo - valor;
 		System.out.println("Saque de " + valor + " realizado com sucesso.");
 		System.out.println("Saldo disponível: " + saldo);
 	}
-	
-	public void efetuarDeposito(float valor) {
+
+	public void efetuarDeposito(float valor) 
+			throws ValorInvalidoException, ContaBloqueadaParaOperacoesException {
 		
+		validarValorParaOperacao(valor, "depósito");
+		
+		validarEstadoConta();
+		
+		saldo = saldo + valor;
+		
+		System.out.println("Depósito de " + valor + " realizado com sucesso.");
+		System.out.println("Saldo disponível: " + saldo);
+	}
+
+	private void validarEstadoConta() throws ContaBloqueadaParaOperacoesException {
+		if (estado != 2) {
+			throw new ContaBloqueadaParaOperacoesException(estado);
+		}
+	}
+
+	private void validarValorParaOperacao(float valor, String op) throws ValorInvalidoException {
+		if (valor <= 0) {
+			throw new ValorInvalidoException(valor, op);
+		}
 	}
 }

@@ -1,5 +1,7 @@
 package edu.newton.ldp.u5.conta;
 
+import javax.swing.JOptionPane;
+
 public class Main {
 
 	public static void main(String[] args){
@@ -8,11 +10,15 @@ public class Main {
 		conta.estado = 2; // inativa 
 		
 		try {
-			conta.efetuarSaque(101.01f);	
+			conta.efetuarSaque(-10.01f);	
 			
 			System.out.println("Saque bem sucedido.");
-		} catch (ValorInvalidoException | ContaBloqueadaParaOperacoesException | SaldoInsuficienteException ex) {
+		} catch (ValorInvalidoException ex) {			
+			System.out.println(ex.getMessage());				
+		} catch (ContaBloqueadaParaOperacoesException ex) {
 			System.out.println(ex.getMessage());			
+		} catch (SaldoInsuficienteException ex) {
+			JOptionPane.showMessageDialog(null, ex.getMessage());			
 		} finally {
 			System.out.println("Terminou.");
 		}
