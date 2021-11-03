@@ -11,7 +11,7 @@ import java.util.Date;
 public class ExemploFileMetadata {
 	
 	public static void main(String[] args) throws IOException {
-		var arquivo = new File("./teste.txt");
+		var arquivo = new File("./teste4.txt");
 		
 		System.out.println("Existe: " + arquivo.exists());
 		System.out.println("Tamanho (Bytes): " + arquivo.length());
