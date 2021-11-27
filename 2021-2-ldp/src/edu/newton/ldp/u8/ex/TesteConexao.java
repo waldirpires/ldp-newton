@@ -53,4 +53,13 @@ public class TesteConexao {
 
 		return con;
 	}
+	
+	public static void fechar(Connection con) throws SQLException {
+		if (con != null && !con.isClosed()) {
+			con.close();
+			System.out.println("INFO: conexão com o banco encerrada com sucesso.");
+		} else {
+			System.out.println("INFO: conexão inexistente ou já encerrada");
+		}
+	}
 }
